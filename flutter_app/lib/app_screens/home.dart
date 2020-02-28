@@ -96,15 +96,24 @@ class FlightBookButton extends StatelessWidget {
         child: Text(
           "Book Your Flight",
           style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.white,
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.w700
-          ),
+              fontSize: 20.0,
+              color: Colors.white,
+              fontFamily: 'Raleway',
+              fontWeight: FontWeight.w700),
         ),
         elevation: 6.0,
-        onPressed: () {},
+        onPressed: () => bookFlight(context),
       ),
     );
+  }
+
+  void bookFlight(BuildContext context) {
+    var alertDialog = AlertDialog(
+      title: Text("Flight Booked Successfully"),
+      content: Text('Have a plesant'),
+    );
+
+    showDialog(
+        context: context, builder: (BuildContext context) => alertDialog);
   }
 }
