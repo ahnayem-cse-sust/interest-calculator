@@ -40,30 +40,40 @@ class Home extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                       child: Text(
-                        "Bus",
-                        textDirection: TextDirection.ltr,
-                        style: TextStyle(
-                            decoration: TextDecoration.none,
-                            fontSize: 35.0,
-                            fontFamily: 'Raleway',
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      )),
+                    "Bus",
+                    textDirection: TextDirection.ltr,
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        fontSize: 35.0,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+                  )),
                   Expanded(
                       child: Text(
-                        " I want to go by Bus",
-                        textDirection: TextDirection.ltr,
-                        style: TextStyle(
-                            decoration: TextDecoration.none,
-                            fontSize: 20.0,
-                            fontFamily: 'Raleway',
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                      )),
+                    " I want to go by Bus",
+                    textDirection: TextDirection.ltr,
+                    style: TextStyle(
+                        decoration: TextDecoration.none,
+                        fontSize: 20.0,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+                  )),
                 ],
-              )
+              ),
+              FlightImageAsset()
             ],
           )),
     );
+  }
+}
+
+class FlightImageAsset extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = AssetImage('images/12125.jpg');
+    Image image = Image(image: assetImage, width: 250.0,height: 250.0,);
+    return Container(child: image,);
   }
 }
