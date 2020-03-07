@@ -21,15 +21,17 @@ class _SIFormState extends State<SIForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+//      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text('Simple Interest Calculator'),
       ),
       body: Container(
-        child: Column(
+        child: ListView(
           children: <Widget>[
             getImageAsset(),
             Padding(
-              padding: EdgeInsets.only(top: _minimumPadding,bottom: _minimumPadding),
+              padding: EdgeInsets.only(
+                  top: _minimumPadding, bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -40,7 +42,8 @@ class _SIFormState extends State<SIForm> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: _minimumPadding,bottom: _minimumPadding),
+              padding: EdgeInsets.only(
+                  top: _minimumPadding, bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -49,6 +52,61 @@ class _SIFormState extends State<SIForm> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0))),
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  top: _minimumPadding, bottom: _minimumPadding),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          labelText: 'Term',
+                          hintText: 'Time in years',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5.0))),
+                    ),
+                  ),
+                  Container(
+                    width: _minimumPadding * 4,
+                  ),
+                  Expanded(
+                    child: DropdownButton<String>(
+                        items: _currencies.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        value: 'Taka',
+                        onChanged: (String newValueSelected) {}),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: _minimumPadding,bottom: _minimumPadding),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: RaisedButton(
+                      child: Text('Calculate'),
+                      onPressed: () {},
+                    ),
+                  ),
+                  Expanded(
+                    child: RaisedButton(
+                      child: Text('Reset'),
+                      onPressed: () {},
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(_minimumPadding * 2),
+              child: Text('Todo Text'),
             ),
           ],
         ),
