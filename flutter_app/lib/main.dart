@@ -22,7 +22,13 @@ class SIForm extends StatefulWidget {
 
 class _SIFormState extends State<SIForm> {
   var _currencies = ['Taka', 'Rupees', 'Dollars', 'Pounds'];
-  final _minimumPadding = 5.0;
+  final double _minimumPadding = 5.0;
+
+  var _currentItemSelected = 'Taka';
+
+  TextEditingController principalController = TextEditingController();
+  TextEditingController roiController = TextEditingController();
+  TextEditingController termController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +50,7 @@ class _SIFormState extends State<SIForm> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 style: textStyle,
+                controller: principalController,
                 decoration: InputDecoration(
                     labelText: 'Principal',
                     hintText: 'Enter Principal e.g. 12000',
@@ -58,6 +65,7 @@ class _SIFormState extends State<SIForm> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 style: textStyle,
+                controller: roiController,
                 decoration: InputDecoration(
                     labelText: 'Rate of Interest',
                     hintText: 'In percent',
@@ -75,6 +83,7 @@ class _SIFormState extends State<SIForm> {
                     child: TextField(
                       keyboardType: TextInputType.number,
                       style: textStyle,
+                      controller: termController,
                       decoration: InputDecoration(
                           labelText: 'Term',
                           hintText: 'Time in years',
@@ -94,8 +103,10 @@ class _SIFormState extends State<SIForm> {
                             child: Text(value),
                           );
                         }).toList(),
-                        value: 'Taka',
-                        onChanged: (String newValueSelected) {}),
+                        value: _currentItemSelected,
+                        onChanged: (String newValueSelected) {
+                          _onDropDownItemSelected(newValueSelected);
+                        }),
                   )
                 ],
               ),
@@ -142,5 +153,11 @@ class _SIFormState extends State<SIForm> {
       margin:
           EdgeInsets.only(left: _minimumPadding * 3, top: _minimumPadding * 10),
     );
+  }
+
+  void _onDropDownItemSelected(String newValueSelected){
+    setState(() {
+      this._currentItemSelected = newValueSelected;
+    });
   }
 }
